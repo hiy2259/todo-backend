@@ -1,14 +1,15 @@
 // Todo Backend Server
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const todoRouter = require('./routers/todoRouter');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // MongoDB 연결
-const MONGODB_URI = 'mongodb://localhost:27017/todo-db';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todo-db';
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
